@@ -19,13 +19,247 @@
 
 </head>
 
+<style>
+  *, *:before, *:after {
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  
+  body, button, input {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    letter-spacing: 1.4px;
+  }
+  
+  .background {
+    display: flex;
+    min-height: 100vh;
+  }
+  
+  .container {
+    flex: 0 1 700px;
+    margin: auto;
+    padding: 10px;
+  }
+  
+  .screen {  
+    position: relative;
+    background: #000000;
+    border-radius: 15px;
+  }
+  
+  .screen:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 20px;
+    right: 20px;
+    bottom: 0;
+    border-radius: 15px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, .4);
+    z-index: -1;
+  }
+  
+  .screen-header {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    background: #4d4d4f;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+  }
+  
+  .screen-header-left {
+    margin-right: auto;
+  }
+  
+  .screen-header-button {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    margin-right: 3px;
+    border-radius: 8px;
+    background: white;
+  }
+  
+  .screen-header-button.close {
+    background: #ed1c6f;
+  }
+  
+  .screen-header-button.maximize {
+    background: #e8e925;
+  }
+  
+  .screen-header-button.minimize {
+    background: #74c54f;
+  }
+  
+  .screen-header-right {
+    display: flex;
+  }
+  
+  .screen-header-ellipsis {
+    width: 3px;
+    height: 3px;
+    margin-left: 2px;
+    border-radius: 8px;
+    background: #999;
+  }
+  
+  .screen-body {
+    display: flex;
+  }
+  
+  .screen-body-item {
+    flex: 1;
+    padding: 50px;
+  }
+  
+  .screen-body-item.left {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .app-title {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    color: #ea1d6f;
+    font-size: 26px;
+  }
+  
+  .app-title:after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    width: 25px;
+    height: 4px;
+    background: #ea1d6f;
+  }
+  
+  .app-contact {
+    margin-top: auto;
+    font-size: 8px;
+    color: #888;
+  }
+  
+  .app-form-group {
+    margin-bottom: 15px;
+  }
+  
+  .app-form-group.message {
+    margin-top: 40px;
+  }
+  
+  .app-form-group.buttons {
+    margin-bottom: 0;
+    text-align: right;
+  }
+  
+  .app-form-control {
+    width: 100%;
+    padding: 10px 0;
+    background: none;
+    border: none;
+    border-bottom: 1px solid #666;
+    color: #ddd;
+    font-size: 14px;
+    text-transform: uppercase;
+    outline: none;
+    transition: border-color .2s;
+  }
+  
+  .app-form-control::placeholder {
+    color: #666;
+  }
+  
+  .app-form-control:focus {
+    border-bottom-color: #ddd;
+  }
+  
+  .app-form-button {
+    background: none;
+    border: none;
+    color: #ea1d6f;
+    font-size: 14px;
+    cursor: pointer;
+    outline: none;
+  }
+  
+  .app-form-button:hover {
+    color: #b9134f;
+  }
+  
+  .credits {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    color: #ffa4bd;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 16px;
+    font-weight: normal;
+  }
+  
+  .credits-link {
+    display: flex;
+    align-items: center;
+    color: #fff;
+    font-weight: bold;
+    text-decoration: none;
+  }
+  
+  .dribbble {
+    width: 20px;
+    height: 20px;
+    margin: 0 5px;
+  }
+  
+  @media screen and (max-width: 1220px) {
+    .screen-body {
+      flex-direction: column;
+    }
+  
+    .screen-body-item.left {
+      margin-bottom: 10px;
+    }
+  
+    .app-title {
+      flex-direction: row;
+    }
+  
+    .app-title span {
+      margin-right: 12px;
+    }
+  
+    .app-title:after {
+      display: none;
+    }
+  }
+  
+  @media screen and (max-width: 600px) {
+    .screen-body {
+      padding: 40px;
+    }
+  
+    .screen-body-item {
+      padding: 0;
+    }
+  }
+  
+</style>
 <body class="classic-bg">
 
     <input id="close-menu" class="close-menu" type="checkbox" aria-label="Close menu" role="button">
     <label class="close-menu-label" for="close-menu" title="close menu"></label>
     <aside class="menu">
         <div class="main-content menu-content">
-            <h1 onclick="getElementById('close-menu').checked = false;" style="margin-top: 0.7rem;"><a href="#home"><img
+            <h1 onclick="getElementById('close-menu').checked = false;" style="margin-top: 1%;"><a href="#home"><img
                         class="icon-home" src="assets/img/home.png"
                         alt="Logo de uma casa, ao clicar voltara para o começo da pagina"></a></h1>
             <nav>
@@ -176,16 +410,12 @@ Yes we are, we do have only one Ads to cover the server cost and we keep scannin
     <section class="section darkgray-bg">
         <div id="top3" class="menu-spacing"></div>
         <div class="home-content">
-            <h2 id="mobile-al" style="text-align: center;">Top 3 Stúdios</h2>
+            <h2 id="mobile-al" style="text-align: center;">Top 3 Stúdio's</h2><br><br>
             <div class="intro-content">
                 <div class="intro-text-content divisao-grid">
-                    <h3>Mappa</h3>
+                    <h3><font color = "pink">  Mappa</font></h3>
                     <p>
-                        MAPPA Co., Ltd. é um estúdio de animação japonês fundado em 14 de junho de 2011 por Masao
-                        Maruyama,
-                        fundador e ex-produtor da Madhouse. "MAPPA" é um acrônimo para Maruyama Animation Produce
-                        Project
-                        Association.
+                      MAPPA Co., Ltd. (Japanese: 株式会社MAPPA, Hepburn: Kabushiki-gaisha MAPPA) is a Japanese animation studio headquartered in Suginami, Tokyo. Founded in 2011 by Madhouse co-founder and producer Masao Maruyama, it has produced anime works including Terror in Resonance<br><br><br><br><br>
                     </p>
                 </div>
                 <div class="intro-img home-img">
@@ -193,11 +423,9 @@ Yes we are, we do have only one Ads to cover the server cost and we keep scannin
                 </div>
 
                 <div class="intro-text-content divisao-grid">
-                    <h3>Ufotable</h3>
+                    <h3><font color = "pink"> Ufotable </font> </h3>
                     <p>
-                        Ufotable é um estúdio de animação japonês baseado em Suginami, Tóquio. Hikaru Kondou - fundou o
-                        estúdio em outubro de 2000. O nome da empresa se origina de uma
-                        mesa em forma de OVNI que Kondou encontrou enquanto desenvolvia a visão do estúdio.
+                        Ufotable, Inc. (Japanese: ユーフォーテーブル有限会社, Hepburn: Yūfōtēburu yūgen-gaisha) is a Japanese animation studio founded in October 2000 by former staff of the TMS Entertainment subsidiary Telecom Animation Film and located in Suginami, Tokyo.<br><br><br><br><br>
                     </p>
                 </div>
                 <div class="intro-img home-img">
@@ -205,12 +433,11 @@ Yes we are, we do have only one Ads to cover the server cost and we keep scannin
                 </div>
 
                 <div class="intro-text-content divisao-grid">
-                    <h3>Pierrot</h3>
+                    <h3><font color = "pink">Pierrot</h3></font>
                     <p>
-                        Pierrot Co., Ltd. é um estúdio de animação japonês fundado em maio de 1979 por
-                        ex-funcionários da Tatsunoko Production e da Mushi Production. Pierrot é conhecido por várias
-                        séries
-                        de anime populares em todo o mundo.
+                      Pierrot Co., Ltd. (株式会社ぴえろ, Kabushiki-gaisha Piero) is a Japanese animation studio established in May 1979 by Yuji Nunokawa, previously an animator and director for Tatsunoko Production. Its headquarters are located in Mitaka, Tokyo.[2] Pierrot is renowned for several worldwide popular anime series, such as Naruto, Bleach, Tokyo Ghoul, Yu Yu Hakusho, Black Clover, Boruto: Naruto Next Generations, Ghost Stories, Great Teacher Onizuka and Saiyuki.
+                  
+              
                     </p>
                 </div>
                 <div class="intro-img home-img">
@@ -222,41 +449,62 @@ Yes we are, we do have only one Ads to cover the server cost and we keep scannin
 
 
 
-
-
-    <form action="https://formsubmit.co/jefferson.martines@hotmail.com" method="POST" class="section classic-bg">
-        <div id="contato" class="menu-spacing"></div>
-        <div class="home-content">
-            <h2 style="text-align: center;">Contato</h2>
+    <div class="background">
+        <div class="container">
+          <div class="screen">
+            <div class="screen-header">
+              <div class="screen-header-left">
+                <div class="screen-header-button close"></div>
+                <div class="screen-header-button maximize"></div>
+                <div class="screen-header-button minimize"></div>
+              </div>
+              <div class="screen-header-right">
+                <div class="screen-header-ellipsis"></div>
+                <div class="screen-header-ellipsis"></div>
+                <div class="screen-header-ellipsis"></div>
+              </div>
+            </div>
+            <div class="screen-body">
+              <div class="screen-body-item left">
+                <div class="app-title">
+                  <span>CONTACT</span>
+                  <span>US</span>
+                </div>
+                <div class="app-contact">CONTACT INFO : </div>
+              </div>
+              <div class="screen-body-item">
+                <div class="app-form">
+                  <div class="app-form-group">
+                    <input class="app-form-control" placeholder="NAME" value="Parth Garg">
+                  </div>
+                  <div class="app-form-group">
+                    <input class="app-form-control" placeholder="EMAIL">
+                  </div>
+                  <div class="app-form-group">
+                    <input class="app-form-control" placeholder="CONTACT NO">
+                  </div>
+                  <div class="app-form-group message">
+                    <input class="app-form-control" placeholder="MESSAGE">
+                  </div>
+                  <div class="app-form-group buttons">
+                    <button class="app-form-button">CANCEL</button>
+                    <button class="app-form-button">SEND</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        
         </div>
-        <div class="home-content contato-form">
-            <fieldset class="form-grid">
-                <div class="form-group">
-                    <label for="primeiro-nome">Primeiro Nome</label>
-                    <input type="text" name="primeiro-nome" id="primeiro-nome" placeholder="Seu Nome" required>
-                </div>
-                <div class="form-group">
-                    <label for="ultimo-nome">Último Nome</label>
-                    <input type="text" name="ultimo-nome" id="ultimo-nome" placeholder="Seu Último Nome" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">E-mail</label>
-                    <input type="email" name="email" id="email" placeholder="Seu E-mail" required>
-                </div>
-                <div class="form-group full-width">
-                    <label for="mensagem">Mensagem</label>
-                    <textarea style="resize: vertical;" name="mensagem" id="mensagem" cols="30" rows="10"
-                        placeholder="Sua Mensagem" required></textarea>
-                </div>
-                <div style="text-align: right;" class="form-group full-width">
-                    <button type="submit">Enviar</button>
-                </div>
-            </fieldset>
-        </div>
-    </form>
+      </div>
+      
+
+    
+    
+    
 
     <footer>
-        <a href="#home"><p class="darkgray-bg footer-cl">By Jefferson Martines</p></a>
+        <a href="#home"><p class="darkgray-bg footer-cl">By Parth Garg</p></a>
     </footer>
 </body>
 

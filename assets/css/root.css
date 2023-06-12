@@ -1,8 +1,8 @@
 :root {
     --primary-color: white;
     --black-color: black;
-    --gray-color: #C0C0C0;
+    --gray-color: hsl(0, 0%, 75%);
     --darkgray-color: #0F0F0F;
-    --invertido-color: #3f3f3f;
+    --invertido-color: hsl(0, 0%, 25%);
     --gap: 3rem;
 }
